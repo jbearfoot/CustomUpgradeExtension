@@ -1,0 +1,22 @@
+{
+  "Replacements": {
+    "WebApplication1": "$(RootNamespace)"
+  },
+  "TemplateItems": [
+    {
+      "Path": "Startup.cs",
+      "Type": "Compile",
+      "Keywords": [
+        "Configure",
+        "ConfigureServices"
+      ]
+    }
+  ],
+  "TemplateOutputType": [
+    "Exe"
+  ],
+  "TemplateLanguage": "CSharp",
+  "TemplateAppliesTo": [
+    "AspNetCore"
+  ]
+}

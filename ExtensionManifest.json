@@ -1,0 +1,12 @@
+{
+  "ExtensionName": "Custom extension",
+
+  "TemplateInserter": {
+    "TemplateConfigFiles": [
+      "CustomTemplates\\TemplateConfig.json"
+    ]
+  },
+  "ExtensionServiceProviders": [
+    "CustomUpgradeExtension.dll"
+  ]
+}

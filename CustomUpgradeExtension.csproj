@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="CustomTemplates\Startup.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="CustomTemplates\TemplateConfig.json" />
+    <None Remove="ExtensionManifest.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="CustomTemplates\TemplateConfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExtensionManifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="CustomTemplates\Startup.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Abstractions" Version="*" />
+  </ItemGroup>
+  <Target Name="ZipPublishUpgradeAssistant" AfterTargets="Build">
+    <PropertyGroup>
+      <ExtensionOutputPath>$(SolutionDir)$(AssemblyName).zip</ExtensionOutputPath>
+    </PropertyGroup>
+    <ZipDirectory
+			Overwrite="true"
+			SourceDirectory="$(OutputPath)"
+			DestinationFile="$(ExtensionOutputPath)" />
+    <Message Importance="High" Text="Zipped Upgrade Assistant Extension: $(ExtensionOutputPath)"/>
+  </Target>
+</Project>
